@@ -25,6 +25,8 @@ const App = () => {
   const addEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch({ type: "CREATE_EVENT", title, body });
+    setTitle("");
+    setBody("");
   };
 
   return (
@@ -64,6 +66,7 @@ const App = () => {
           className="btn btn-danger"
           onClick={(e) => {
             e.preventDefault();
+            window.alert("ほんとに消してええんか？");
             dispatch({ type: "DELETE_ALL_EVENT" });
           }}
         >
