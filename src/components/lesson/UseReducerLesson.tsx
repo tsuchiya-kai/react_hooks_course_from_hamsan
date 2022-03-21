@@ -1,4 +1,6 @@
-import { useState, useEffect, useReducer } from "react";
+// import { useState, useEffect, useReducer } from "react";
+// import "bootstrap"; // jquery依存の部分も入るのでエラーになる、後デカすぎる
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /**
  * メモ:
@@ -15,41 +17,38 @@ import { useState, useEffect, useReducer } from "react";
  *
  */
 const App = () => {
-  const [count, setCount] = useState<number>(0);
-
-  type ChangeType = "increment" | "decrement";
-  const changeCount = (type: ChangeType): void => {
-    setCount((prev) => {
-      if (type === "increment") return prev + 1;
-      if (type === "decrement") return prev - 1;
-      return prev;
-    });
-  };
-
-  // 全てのmount時とupdate時に発火する
-  useEffect(() => {
-    console.log("useEffect");
-  });
-
-  // componentDidMount（mount時に1回だけ発火する）
-  useEffect(() => {
-    console.log("componentDidMountのタイミングです");
-  }, []); // 空配列を第二引数に渡す
-
-  // 特定のパラメーターの描画時・値の更新時に描画される
-  useEffect(() => {
-    console.log("countのやつ");
-  }, [count]);
-
   return (
-    <>
-      <h1>useReducerのレッスン</h1>
+    <div className="container-fluid">
+      <br />
+      <h4>イベント作成フォーム</h4>
+      <form>
+        <div className="form-group">
+          <label htmlFor="formEventTitle">タイトル</label>
+          <input className="form-control" id="formEventTitle" />
+        </div>
 
-      <p>count: {count}</p>
+        <div className="form-group">
+          <label htmlFor="formEventBody">ボディー</label>
+          <textarea className="form-control" id="formEventBody" />
+        </div>
 
-      <button onClick={() => changeCount("increment")}>+1</button>
-      <button onClick={() => changeCount("decrement")}>-1</button>
-    </>
+        <button className="btn btn-primary">イベントを作成する</button>
+        <button className="btn btn-danger">全てのイベントを削除する</button>
+      </form>
+      <br />
+      <h4>イベント一覧</h4>
+      <table className="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>ボディー</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   );
 };
 
