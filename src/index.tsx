@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 // import UseStateLesson from "./lesson/UseStateLesson"; // useStateのレッスン
 // import UseEffectLesson from "./lesson/UseEffectLesson"; // useEffectのレッスン
-import UseReducerLesson from "./lesson/UseReducerLesson"; // useReducerのレッスン
+import UseReducerLesson from "./components/lesson/UseReducerLesson"; // useReducerのレッスン
 
 ReactDOM.render(
   <React.StrictMode>
