@@ -20,6 +20,7 @@ const App = () => {
   return (
     <div className="container-fluid">
       <br />
+
       <h4>イベント作成フォーム</h4>
       <form>
         <div className="form-group">
@@ -35,7 +36,9 @@ const App = () => {
         <button className="btn btn-primary">イベントを作成する</button>
         <button className="btn btn-danger">全てのイベントを削除する</button>
       </form>
+
       <br />
+
       <h4>イベント一覧</h4>
       <table className="table table-hover">
         <thead>
