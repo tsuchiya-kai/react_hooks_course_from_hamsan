@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import UseStateLesson from "./lesson/useStateLesson"; // useStateのレッスン
+// import UseStateLesson from "./lesson/UseStateLesson"; // useStateのレッスン
+import UseEffectLesson from "./lesson/UseEffectLesson"; // useEffectのレッスン
 
 ReactDOM.render(
   <React.StrictMode>
-    <UseStateLesson />
+    <UseEffectLesson />
   </React.StrictMode>,
   document.getElementById("root")
 );
