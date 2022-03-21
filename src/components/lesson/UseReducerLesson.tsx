@@ -1,4 +1,5 @@
-// import { useState, useEffect, useReducer } from "react";
+import { useReducer, useState } from "react";
+import reducer from "../../reducers";
 // import "bootstrap"; // jquery依存の部分も入るのでエラーになる、後デカすぎる
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,6 +18,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
  *
  */
 const App = () => {
+  const [title, setTitle] = useState<string>("");
+  const [body, setBody] = useState<string>("");
+  const [state, dispatch] = useReducer(reducer, []);
+
+  const addEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    dispatch({ type: "CREATE_EVENT", title, body });
+  };
+
   return (
     <div className="container-fluid">
       <br />
@@ -25,16 +35,40 @@ const App = () => {
       <form>
         <div className="form-group">
           <label htmlFor="formEventTitle">タイトル</label>
-          <input className="form-control" id="formEventTitle" />
+          <input
+            className="form-control"
+            id="formEventTitle"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="formEventBody">ボディー</label>
-          <textarea className="form-control" id="formEventBody" />
+          <textarea
+            className="form-control"
+            id="formEventBody"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
         </div>
 
-        <button className="btn btn-primary">イベントを作成する</button>
-        <button className="btn btn-danger">全てのイベントを削除する</button>
+        <button
+          className="btn btn-primary"
+          onClick={addEvent}
+          disabled={!title || !body}
+        >
+          イベントを作成する
+        </button>
+        <button
+          className="btn btn-danger"
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch({ type: "DELETE_ALL_EVENT" });
+          }}
+        >
+          全てのイベントを削除する
+        </button>
       </form>
 
       <br />
@@ -49,7 +83,28 @@ const App = () => {
             <th></th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {state.map((event) => {
+            return (
+              <tr key={event.id}>
+                <th>{event.id}</th>
+                <th>{event.title}</th>
+                <th>{event.body}</th>
+                <th>
+                  <button
+                    className="btn btn-danger"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch({ type: "DELETE_EVENT", id: event.id });
+                    }}
+                  >
+                    削除
+                  </button>
+                </th>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
