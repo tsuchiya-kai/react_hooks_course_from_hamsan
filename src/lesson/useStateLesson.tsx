@@ -5,9 +5,9 @@ import { useState } from "react";
  * useStateの講座
  * 特にわからないことはなかったのでさっと流した
  */
-const App = () => {
+const App = (props: { name: string }) => {
+  // count系
   const [count, setCount] = useState<number>(0);
-
   type ChangeType = "increment" | "decrement";
   const changeCount = (type: ChangeType): void => {
     setCount((prev) => {
@@ -18,13 +18,18 @@ const App = () => {
   };
 
   const double = () => setCount((prev) => prev * 2);
-
   const divide3 = () => setCount((prev) => (prev % 3 === 0 ? prev / 3 : prev));
+
+  // input系
+  const [input, setInput] = useState<string>("");
+  const setUserInput = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setInput(e.target.value);
 
   return (
     <>
       <h1>useStateのレッスン</h1>
 
+      <h2>カウント</h2>
       <p>count: {count}</p>
 
       <button onClick={() => changeCount("increment")}>+1</button>
@@ -38,8 +43,23 @@ const App = () => {
 
       <br />
       <button onClick={divide3}>3の倍数の時だけ3で割る</button>
+
+      <br />
+
+      <h2>ユーザー入力</h2>
+      <p>ユーザー入力:「{input}」</p>
+      <input type="text" onChange={(e) => setUserInput(e)} />
     </>
   );
 };
 
 export default App;
+
+/**
+ * NOTE:
+ * [propsの初期値設定]
+ * この書き方だと型が効かないっぽい
+ */
+App.defaultProps = {
+  name: 1,
+};
