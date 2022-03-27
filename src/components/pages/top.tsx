@@ -4,9 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // component
 import { TopForm, EventList } from "../atomic/organisms";
 // 以下 Context周り
-import AppContex from "../../contexts/AppContext";
-
-console.log({ AppContex });
+import AppContext from "../../contexts/AppContext";
 
 /**
  * メモ:
@@ -24,19 +22,21 @@ const App = () => {
   };
 
   return (
-    <AppContex.Provider value={"テスト"}>
+    <AppContext.Provider
+      value={{ title, setTitle, body, setBody, addEvent, state, dispatch }}
+    >
       <div className="container-fluid">
         <br />
 
         <h4>イベント作成フォーム</h4>
-        <TopForm {...{ title, setTitle, body, setBody, addEvent, dispatch }} />
+        <TopForm />
 
         <br />
 
         <h4>イベント一覧</h4>
-        <EventList {...{ state, dispatch }} />
+        <EventList />
       </div>
-    </AppContex.Provider>
+    </AppContext.Provider>
   );
 };
 

@@ -1,25 +1,13 @@
 import { useContext } from "react";
 import AppContext from "../../../contexts/AppContext";
-import type { State } from "../../../reducers";
+import { EventTBody } from "./index";
 
-type Props = {
-  state: State;
-  dispatch: (arg: any) => void; //いったん緩めで
-};
-
-const EventList = (props: Props) => {
-  const { state, dispatch } = props;
-  const value = useContext(AppContext);
+const EventList = () => {
+  const AppContextValue = useContext(AppContext);
 
   return (
     <>
-      <AppContext.Consumer>
-        {(value) => {
-          return <div>{value}</div>;
-        }}
-      </AppContext.Consumer>
-      <p>{value}</p>
-
+      <pre>{JSON.stringify(AppContextValue)}</pre>
       <table className="table table-hover">
         <thead>
           <tr>
@@ -29,29 +17,8 @@ const EventList = (props: Props) => {
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          {state.map((event) => {
-            return (
-              <tr key={event.id}>
-                <th>{event.id}</th>
-                <th>{event.title}</th>
-                <th>{event.body}</th>
-                <th>
-                  <button
-                    className="btn btn-danger"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      dispatch({ type: "DELETE_EVENT", id: event.id });
-                    }}
-                  >
-                    削除
-                  </button>
-                </th>
-              </tr>
-            );
-          })}
-        </tbody>
       </table>
+      <EventTBody />
     </>
   );
 };
