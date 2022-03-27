@@ -2,7 +2,7 @@ import { useReducer, useState } from "react";
 import reducer from "../../reducers";
 import "bootstrap/dist/css/bootstrap.min.css";
 // component
-import { Form } from "../atomic/organisms";
+import { TopForm } from "../atomic/organisms";
 // 以下 Context周り
 import AppContex from "../../contexts/AppContex";
 
@@ -28,7 +28,7 @@ const App = () => {
       <br />
 
       <h4>イベント作成フォーム</h4>
-      <Form {...{ title, setTitle, body, setBody, addEvent, dispatch }} />
+      <TopForm {...{ title, setTitle, body, setBody, addEvent, dispatch }} />
 
       <br />
 
