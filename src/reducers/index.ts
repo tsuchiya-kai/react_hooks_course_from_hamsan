@@ -3,7 +3,7 @@ type event = {
   title: string;
   body: string;
 };
-type State = event[];
+export type State = event[];
 type CreateCase = Omit<event, "id"> & { type: "CREATE_EVENT" };
 type DeleteCase = { id: number; type: "DELETE_EVENT" };
 type DeleteAllCase = { type: "DELETE_ALL_EVENT" };

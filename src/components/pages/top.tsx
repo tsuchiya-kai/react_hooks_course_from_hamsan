@@ -2,7 +2,7 @@ import { useReducer, useState } from "react";
 import reducer from "../../reducers";
 import "bootstrap/dist/css/bootstrap.min.css";
 // component
-import { TopForm } from "../atomic/organisms";
+import { TopForm, EventList } from "../atomic/organisms";
 // 以下 Context周り
 import AppContex from "../../contexts/AppContex";
 
@@ -33,38 +33,7 @@ const App = () => {
       <br />
 
       <h4>イベント一覧</h4>
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>タイトル</th>
-            <th>ボディー</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {state.map((event) => {
-            return (
-              <tr key={event.id}>
-                <th>{event.id}</th>
-                <th>{event.title}</th>
-                <th>{event.body}</th>
-                <th>
-                  <button
-                    className="btn btn-danger"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      dispatch({ type: "DELETE_EVENT", id: event.id });
-                    }}
-                  >
-                    削除
-                  </button>
-                </th>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <EventList {...{ state, dispatch }} />
     </div>
   );
 };
