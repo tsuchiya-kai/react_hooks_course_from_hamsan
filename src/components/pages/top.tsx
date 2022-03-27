@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // component
 import { TopForm, EventList } from "../atomic/organisms";
 // 以下 Context周り
-import AppContex from "../../contexts/AppContex";
+import AppContex from "../../contexts/AppContext";
 
 console.log({ AppContex });
 

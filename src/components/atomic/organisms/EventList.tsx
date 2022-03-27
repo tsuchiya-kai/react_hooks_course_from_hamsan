@@ -1,5 +1,6 @@
+import { useContext } from "react";
+import AppContext from "../../../contexts/AppContext";
 import type { State } from "../../../reducers";
-import AppContext from "../../../contexts/AppContex";
 
 type Props = {
   state: State;
@@ -8,6 +9,7 @@ type Props = {
 
 const EventList = (props: Props) => {
   const { state, dispatch } = props;
+  const value = useContext(AppContext);
 
   return (
     <>
@@ -16,6 +18,8 @@ const EventList = (props: Props) => {
           return <div>{value}</div>;
         }}
       </AppContext.Consumer>
+      <p>{value}</p>
+
       <table className="table table-hover">
         <thead>
           <tr>
