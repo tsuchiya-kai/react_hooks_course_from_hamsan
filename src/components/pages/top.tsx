@@ -24,17 +24,19 @@ const App = () => {
   };
 
   return (
-    <div className="container-fluid">
-      <br />
+    <AppContex.Provider value={"テスト"}>
+      <div className="container-fluid">
+        <br />
 
-      <h4>イベント作成フォーム</h4>
-      <TopForm {...{ title, setTitle, body, setBody, addEvent, dispatch }} />
+        <h4>イベント作成フォーム</h4>
+        <TopForm {...{ title, setTitle, body, setBody, addEvent, dispatch }} />
 
-      <br />
+        <br />
 
-      <h4>イベント一覧</h4>
-      <EventList {...{ state, dispatch }} />
-    </div>
+        <h4>イベント一覧</h4>
+        <EventList {...{ state, dispatch }} />
+      </div>
+    </AppContex.Provider>
   );
 };
 

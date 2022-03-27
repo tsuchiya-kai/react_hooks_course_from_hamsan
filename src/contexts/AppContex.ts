@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
-type AppContextType = {};
+type AppContextType = string;
 
-const AppContext = createContext<AppContextType>({});
+const AppContext = createContext<AppContextType>("");
 
 export default AppContext;
