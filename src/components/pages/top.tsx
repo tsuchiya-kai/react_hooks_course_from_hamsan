@@ -1,6 +1,8 @@
 import { useReducer, useState } from "react";
 import reducer from "../../reducers";
 import "bootstrap/dist/css/bootstrap.min.css";
+// component
+import { Form } from "../atomic/organisms";
 // 以下 Context周り
 import AppContex from "../../contexts/AppContex";
 
@@ -26,45 +28,7 @@ const App = () => {
       <br />
 
       <h4>イベント作成フォーム</h4>
-      <form>
-        <div className="form-group">
-          <label htmlFor="formEventTitle">タイトル</label>
-          <input
-            className="form-control"
-            id="formEventTitle"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="formEventBody">ボディー</label>
-          <textarea
-            className="form-control"
-            id="formEventBody"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
-        </div>
-
-        <button
-          className="btn btn-primary"
-          onClick={addEvent}
-          disabled={!title || !body}
-        >
-          イベントを作成する
-        </button>
-        <button
-          className="btn btn-danger"
-          onClick={(e) => {
-            e.preventDefault();
-            window.alert("ほんとに消してええんか？");
-            dispatch({ type: "DELETE_ALL_EVENT" });
-          }}
-        >
-          全てのイベントを削除する
-        </button>
-      </form>
+      <Form {...{ title, setTitle, body, setBody, addEvent, dispatch }} />
 
       <br />
 
