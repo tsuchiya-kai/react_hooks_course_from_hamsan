@@ -1,6 +1,7 @@
 import { useReducer, useState } from "react";
 import reducer from "../../reducers";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { timeCurrentISO8601 } from "../../utils";
 // component
 import { TopForm, EventList } from "../atomic/organisms";
 // 以下 Context周り
@@ -18,6 +19,11 @@ const App = () => {
   const addEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch({ type: "CREATE_EVENT", title, body });
+    dispatch({
+      type: "ADD_OPERATION_LOG",
+      description: "イベントを作成しました。",
+      operatedAt: timeCurrentISO8601(),
+    });
     setTitle("");
     setBody("");
   };

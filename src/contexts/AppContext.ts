@@ -1,5 +1,9 @@
 import { createContext } from "react";
 import type { State as Events } from "../reducers/events";
+import reducer from "../reducers";
+console.log(reducer);
+
+type ReducerParameterAction = Parameters<typeof reducer>[1];
 
 type AppContextType = {
   state: { events: Events };
@@ -8,7 +12,7 @@ type AppContextType = {
   body: string;
   setBody?: (arg: string) => void;
   addEvent?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  dispatch?: (arg: any) => void; //いったん緩めで
+  dispatch?: React.Dispatch<ReducerParameterAction>;
 };
 
 const AppContext = createContext<AppContextType>({

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import AppContext from "../../../contexts/AppContext";
+import { timeCurrentISO8601 } from "../../../utils";
 
 const Form = () => {
   const { title, setTitle, body, setBody, addEvent, dispatch } =
@@ -45,6 +46,11 @@ const Form = () => {
             e.preventDefault();
             window.confirm("ほんとに消してええんか？");
             dispatch({ type: "DELETE_ALL_EVENT" });
+            dispatch({
+              type: "ADD_OPERATION_LOG",
+              description: "全てのイベントを削除しました",
+              operatedAt: timeCurrentISO8601(),
+            });
           }}
         >
           全てのイベントを削除する

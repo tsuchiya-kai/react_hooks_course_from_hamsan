@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import AppContext from "../../../contexts/AppContext";
+import { timeCurrentISO8601 } from "../../../utils";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const EventTBody = () => {
@@ -19,6 +20,11 @@ const EventTBody = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     dispatch({ type: "DELETE_EVENT", id: event.id });
+                    dispatch({
+                      type: "ADD_OPERATION_LOG",
+                      description: "全てのイベントを削除しました",
+                      operatedAt: timeCurrentISO8601(),
+                    });
                   }}
                 >
                   削除
