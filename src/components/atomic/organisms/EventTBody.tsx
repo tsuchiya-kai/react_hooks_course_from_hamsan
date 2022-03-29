@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import AppContext from "../../../contexts/AppContext";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const EventTBody = () => {
   const { state, dispatch } = useContext(AppContext);

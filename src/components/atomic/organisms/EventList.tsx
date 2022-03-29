@@ -17,8 +17,8 @@ const EventList = () => {
             <th></th>
           </tr>
         </thead>
+        <EventTBody />
       </table>
-      <EventTBody />
     </>
   );
 };
