@@ -1,8 +1,8 @@
 import { createContext } from "react";
-import type { State } from "../reducers";
+import type { State as Events } from "../reducers/events";
 
 type AppContextType = {
-  state: State;
+  state: { events: Events };
   title: string;
   setTitle?: (arg: string) => void;
   body: string;
@@ -12,9 +12,11 @@ type AppContextType = {
 };
 
 const AppContext = createContext<AppContextType>({
-  state: [],
+  state: { events: [] },
   title: "",
   body: "",
 });
+
+// TODO: contextをexportする
 
 export default AppContext;

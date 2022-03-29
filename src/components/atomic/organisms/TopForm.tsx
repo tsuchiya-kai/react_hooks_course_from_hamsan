@@ -43,7 +43,7 @@ const Form = () => {
           className="btn btn-danger"
           onClick={(e) => {
             e.preventDefault();
-            window.alert("ほんとに消してええんか？");
+            window.confirm("ほんとに消してええんか？");
             dispatch({ type: "DELETE_ALL_EVENT" });
           }}
         >

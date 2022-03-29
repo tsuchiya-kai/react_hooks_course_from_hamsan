@@ -6,7 +6,7 @@ const EventTBody = () => {
   const { state, dispatch } = useContext(AppContext);
   return (
     <tbody>
-      {state.map((event) => {
+      {state.events.map((event) => {
         return (
           <tr key={event.id}>
             <th>{event.id}</th>

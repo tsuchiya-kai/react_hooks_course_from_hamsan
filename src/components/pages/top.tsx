@@ -12,7 +12,8 @@ import AppContext from "../../contexts/AppContext";
 const App = () => {
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
-  const [state, dispatch] = useReducer(reducer, []);
+  const initialState = { events: [] };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const addEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -23,7 +24,15 @@ const App = () => {
 
   return (
     <AppContext.Provider
-      value={{ title, setTitle, body, setBody, addEvent, state, dispatch }}
+      value={{
+        title,
+        setTitle,
+        body,
+        setBody,
+        addEvent,
+        state,
+        dispatch,
+      }}
     >
       <div className="container-fluid">
         <br />

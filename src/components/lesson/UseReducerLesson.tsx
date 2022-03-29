@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import reducer from "../../reducers";
+import reducer from "../../reducers/events";
 // import "bootstrap"; // jquery依存の部分も入るのでエラーになる、後デカすぎる
 import "bootstrap/dist/css/bootstrap.min.css";
 
