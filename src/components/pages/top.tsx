@@ -12,7 +12,7 @@ import AppContext from "../../contexts/AppContext";
 const App = () => {
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
-  const initialState = { events: [] };
+  const initialState = { events: [], operationLogs: [] };
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const addEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
