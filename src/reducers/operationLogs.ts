@@ -4,7 +4,7 @@ type operation = {
 };
 export type State = operation[];
 type AddCase = operation & { type: "ADD_OPERATION_LOG" };
-type AllDeleteCase = { id: number; type: "DELETE_ALL_OPERATION_LOGS" };
+type AllDeleteCase = { type: "DELETE_ALL_OPERATION_LOGS" };
 type Action = AddCase | AllDeleteCase;
 
 const operationLogs = (state: State = [], action: Action) => {

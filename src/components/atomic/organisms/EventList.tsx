@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import AppContext from "../../../contexts/AppContext";
+import { useAppContext } from "../../../contexts/AppContext";
 import { EventTBody } from "./index";
 
 const EventList = () => {
-  const AppContextValue = useContext(AppContext);
+  const AppContextValue = useAppContext();
 
   return (
     <>

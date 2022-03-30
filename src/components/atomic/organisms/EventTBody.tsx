@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import AppContext from "../../../contexts/AppContext";
+import { useAppContext } from "../../../contexts/AppContext";
 import { timeCurrentISO8601 } from "../../../utils";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const EventTBody = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state, dispatch } = useAppContext();
   return (
     <tbody>
       {state.events.map((event) => {
