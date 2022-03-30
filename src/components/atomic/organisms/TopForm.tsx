@@ -2,8 +2,15 @@ import { useAppContext } from "../../../contexts/AppContext";
 import { timeCurrentISO8601 } from "../../../utils";
 
 const Form = () => {
-  const { title, setTitle, body, setBody, addEvent, dispatch } =
-    useAppContext();
+  const {
+    title,
+    setTitle,
+    body,
+    setBody,
+    addEvent,
+    dispatch,
+    state: { events, operationLogs },
+  } = useAppContext();
 
   return (
     <form>
@@ -31,6 +38,7 @@ const Form = () => {
         className="btn btn-primary"
         onClick={addEvent}
         disabled={!title || !body}
+        style={{ marginRight: "8px" }}
       >
         イベントを作成する
       </button>
@@ -47,6 +55,8 @@ const Form = () => {
             operatedAt: timeCurrentISO8601(),
           });
         }}
+        disabled={!events.length}
+        style={{ marginRight: "8px" }}
       >
         全てのイベントを削除する
       </button>
@@ -58,6 +68,7 @@ const Form = () => {
           window.confirm("ほんまに全部消してまうでぇ？");
           dispatch({ type: "DELETE_ALL_OPERATION_LOGS" });
         }}
+        disabled={!operationLogs.length}
       >
         全ての操作ログを削除する
       </button>

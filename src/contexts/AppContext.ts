@@ -1,12 +1,13 @@
 import { createContext, useContext } from "react";
 import type { State as Events } from "../reducers/events";
+import type { State as OperationLogs } from "../reducers/operationLogs";
 import reducer from "../reducers";
 console.log(reducer);
 
 type ReducerParameterAction = Parameters<typeof reducer>[1];
 
 type AppContextType = {
-  state: { events: Events };
+  state: { events: Events; operationLogs: OperationLogs };
   title: string;
   setTitle: (arg: string) => void;
   body: string;
