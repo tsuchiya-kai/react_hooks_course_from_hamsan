@@ -47,7 +47,8 @@ const Form = () => {
         className="btn btn-danger"
         onClick={(e) => {
           e.preventDefault();
-          window.confirm("ほんまに消してええんか？");
+          const result = window.confirm("ほんまに消してええんか？");
+          if (!result) return;
           dispatch({ type: "DELETE_ALL_EVENT" });
           dispatch({
             type: "ADD_OPERATION_LOG",
@@ -65,7 +66,8 @@ const Form = () => {
         className="btn btn-danger"
         onClick={(e) => {
           e.preventDefault();
-          window.confirm("ほんまに全部消してまうでぇ？");
+          const result = window.confirm("ほんまに全部消してまうでぇ？");
+          if (!result) return;
           dispatch({ type: "DELETE_ALL_OPERATION_LOGS" });
         }}
         disabled={!operationLogs.length}

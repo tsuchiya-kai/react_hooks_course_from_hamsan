@@ -3,7 +3,7 @@ import reducer from "../../reducers";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { timeCurrentISO8601 } from "../../utils";
 // component
-import { TopForm, EventList } from "../atomic/organisms";
+import { TopForm, EventList, OperationLogs } from "../atomic/organisms";
 // 以下 Context周り
 import AppContext from "../../contexts/AppContext";
 
@@ -50,6 +50,11 @@ const App = () => {
 
         <h4>イベント一覧</h4>
         <EventList />
+
+        <br />
+
+        <h4>操作ログ一覧</h4>
+        <OperationLogs />
       </div>
     </AppContext.Provider>
   );
