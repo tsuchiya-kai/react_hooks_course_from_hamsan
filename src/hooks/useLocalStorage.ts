@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
+
 const useLocalStorage = <T extends Record<string, unknown>>(
   stateName: string
 ) => {
-  const setState = (key: keyof T, value: T[keyof T]) => {
+  const setState = (key: keyof T, value: T[typeof key]) => {
     const currentState: T = JSON.parse(localStorage.getItem(stateName) ?? "{}");
     currentState[key] = value;
     const json = JSON.stringify(currentState);
@@ -21,6 +23,7 @@ const useLocalStorage = <T extends Record<string, unknown>>(
     setState,
     deleteState,
     allDelete,
+    getState: localStorage.getItem(stateName),
   };
 };
 

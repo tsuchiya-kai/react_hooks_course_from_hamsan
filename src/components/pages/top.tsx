@@ -6,6 +6,7 @@ import { timeCurrentISO8601 } from "../../utils";
 import { TopForm, EventList, OperationLogs } from "../atomic/organisms";
 // 以下 Context周り
 import AppContext from "../../contexts/AppContext";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 /**
  * メモ:
@@ -27,6 +28,13 @@ const App = () => {
     setTitle("");
     setBody("");
   };
+
+  // 以下テスト
+  type TestState = {
+    key1: string;
+    key2: number;
+  };
+  const { setState, deleteState } = useLocalStorage<TestState>("testState");
 
   return (
     <AppContext.Provider
@@ -55,6 +63,12 @@ const App = () => {
 
         <h4>操作ログ一覧</h4>
         <OperationLogs />
+
+        <button onClick={() => setState("key1", "テスト")}>テスト</button>
+        <button onClick={() => setState("key2", "テスト")}>テスト2</button>
+
+        <button onClick={() => deleteState("key1")}>テスト</button>
+        <button onClick={() => deleteState("key2")}>テスト2</button>
       </div>
     </AppContext.Provider>
   );
