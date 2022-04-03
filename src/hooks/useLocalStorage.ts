@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 const useLocalStorage = <T extends Record<string, unknown>>(
   stateName: string
 ) => {

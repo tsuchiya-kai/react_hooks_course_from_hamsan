@@ -34,7 +34,8 @@ const App = () => {
     key1: string;
     key2: number;
   };
-  const { setState, deleteState } = useLocalStorage<TestState>("testState");
+  const { setState: setStateForTest, deleteState } =
+    useLocalStorage<TestState>("testState");
 
   return (
     <AppContext.Provider
@@ -64,8 +65,10 @@ const App = () => {
         <h4>操作ログ一覧</h4>
         <OperationLogs />
 
-        <button onClick={() => setState("key1", "テスト")}>テスト</button>
-        <button onClick={() => setState("key2", "テスト")}>テスト2</button>
+        <button onClick={() => setStateForTest("key1", "テスト")}>
+          テスト
+        </button>
+        <button onClick={() => setStateForTest("key2", 1)}>テスト2</button>
 
         <button onClick={() => deleteState("key1")}>テスト</button>
         <button onClick={() => deleteState("key2")}>テスト2</button>
